@@ -1,0 +1,36 @@
+.css-0 > a{
+    display:grid;
+    grid-template-columns: 300px 1fr;
+    grid-template-rows:1fr 1fr 1fr;
+    grid-column-gap:20px;
+    margin-bottom:30px;
+}
+
+.css-0 > a > img{
+    grid-row:1/4;
+    grid-column: 1;
+    max-width: 300px;
+}
+
+.css-0 > a > span{
+    grid-column: 2;
+    grid-row:1;
+    align-self: start;
+    justify-self: start;
+    margin:0
+}
+
+.chakra-text.css-0{
+grid-row:1;
+grid-column:2;
+}
+
+.css-0{
+    list-style-type: none;
+}
+
+.css-0 > a > div:nth-child(3){
+    white-space: initial;
+  max-width: 500px;
+  grid-row:2;
+}

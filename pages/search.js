@@ -15,6 +15,8 @@ import {
   VStack,
   Button,
   Badge,
+  Image,
+  
 } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
 import Layout from '../components/Layout';
@@ -75,16 +77,25 @@ function SearchResults() {
     return <Text>No results</Text>;
   }
   return (
+    
     <UnorderedList stylePosition="inside">
-      {data.results.map(({ id, title, release_date }) => (
-        <ListItem key={id}>
-          <Link href={`/movies/${id}`} passHref>
+      {data.results.map(({ id, title, release_date, poster_path, overview }) => (
+        <ListItem key={id} list-style-type="none">
+          
+          <Link href={`/movies/${id}`}
+           passHref
+           >            
             <Button
               as="a"
               variant="link"
               rightIcon={<Badge>{release_date}</Badge>}
+              
             >
-              <Text as="span">{title} </Text>
+              <Image src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+              alt = "Movie poster"
+             />
+              <Text as="h4">{title}</Text>
+              <Text as="div">{overview}</Text>
             </Button>
           </Link>
         </ListItem>

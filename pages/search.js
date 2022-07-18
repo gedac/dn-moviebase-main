@@ -79,7 +79,7 @@ function SearchResults() {
   return (
     
     <UnorderedList stylePosition="inside">
-      {data.results.map(({ id, title, release_date, poster_path, overview }) => (
+      {data.results.map(({ id, title, release_date, poster_path, overview, }) => (
         <ListItem key={id} list-style-type="none">
           
           <Link href={`/movies/${id}`}

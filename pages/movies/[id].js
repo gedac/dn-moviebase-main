@@ -14,9 +14,38 @@ import {
   Stack,
   Tag,
   Text,
+  UnorderedList,
+
 } from '@chakra-ui/react';
 import Layout from '../../components/Layout';
 import HistoryButton from '../../components/HistoryButton';
+
+import useFetch from "../../utils/useFetch";
+
+import { fetcher } from "../../utils/useFetch";
+
+function Credits(props) {
+  const { movieId } = props;
+  const BASE_URL = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=53876badebbba586618edeba5a132260`;
+  const { data: credits, loading, error } = useFetch(BASE_URL, { credits: [] });
+  console.log(movieId);
+  return (
+    <div className="credits">
+      <h1 id="headCredits">Credits</h1>
+      <div id="creditsList">
+      {loading ? (
+        "Loading"
+      ) : credits && credits.cast ? (
+        credits.cast.map((castMember) => <p>{castMember.name}</p>)
+      ) : (
+        <div>{"Error fetching credits"}</div>
+      )}
+      {error ? error : null}
+    </div>
+    </div>
+  );
+}
+
 
 const MovieContent = () => {
   const { id } = useRouter().query;
@@ -77,6 +106,8 @@ const MovieContent = () => {
           ))}
         </Stack>
         <Box>{data.overview}</Box>
+        <div id="rating">Rated {data.vote_average} out of 10</div>
+        <Credits movieId={id} />         
       </Stack>
     </Stack>
   );

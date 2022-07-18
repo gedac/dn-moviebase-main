@@ -6,3 +6,5 @@ export const swrOptions = {
 
 export const buildImageUrl = (path, size = 'original') =>
   `https://image.tmdb.org/t/p/${size}${path}`;
+
+

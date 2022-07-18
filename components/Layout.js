@@ -55,10 +55,10 @@ function Header() {
             spacing={4}
           >
             <MenuItem href="/search">Search</MenuItem>
-            <MenuItem href="/" disabled>
+            <MenuItem href="/">
               Watchlist
             </MenuItem>
-            <MenuItem href="/" disabled>
+            <MenuItem href="/">
               History
             </MenuItem>
           </Stack>
@@ -66,7 +66,7 @@ function Header() {
           <Spacer />
 
           <Box display={[isOpen ? 'block' : 'none', , 'block']}>
-            <MenuItem href="/" variant="outline" disabled>
+            <MenuItem href="/" variant="outline">
               What to watch
             </MenuItem>
           </Box>

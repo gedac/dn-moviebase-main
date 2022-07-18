@@ -10,7 +10,7 @@ export default function HistoryButton() {
   const { mutate } = useSWRConfig();
 
   return (
-    <Tooltip label={data?.found ? 'Remove from history' : 'Add to history'}>
+    <Tooltip label={data?.found ? 'Remove from watchlist' : 'Add to watchlist'}>
       <IconButton
         isLoading={!data}
         colorScheme={data?.found ? 'purple' : 'gray'}

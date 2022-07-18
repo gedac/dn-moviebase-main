@@ -14,11 +14,10 @@ import {
   Stack,
   Tag,
   Text,
-  UnorderedList,
 
 } from '@chakra-ui/react';
 import Layout from '../../components/Layout';
-import HistoryButton from '../../components/HistoryButton';
+import WatchlistButton from '../../components/WatchlistButton';
 
 import useFetch from "../../utils/useFetch";
 
@@ -75,7 +74,7 @@ const MovieContent = () => {
       </Head>
       <Box minW="300px" pos="relative">
         <HStack pos="absolute" zIndex={1} top={2} right={2}>
-          <HistoryButton />
+          <WatchlistButton />
         </HStack>
         <Image
           src={buildImageUrl(data.poster_path, 'w300')}

@@ -55,10 +55,10 @@ function Header() {
             spacing={4}
           >
             <MenuItem href="/search">Search</MenuItem>
-            <MenuItem href="/">
+            <MenuItem href="/watchlist">
               Watchlist
             </MenuItem>
-            <MenuItem href="/">
+            <MenuItem href="/history">
               History
             </MenuItem>
           </Stack>

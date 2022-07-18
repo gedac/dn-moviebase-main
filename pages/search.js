@@ -79,7 +79,7 @@ function SearchResults() {
   return (
     
     <UnorderedList stylePosition="inside">
-      {data.results.map(({ id, title, release_date, poster_path, overview, }) => (
+      {data.results.map(({ id, title, poster_path, vote_average, }) => (
         <ListItem key={id} list-style-type="none">
           
           <Link href={`/movies/${id}`}
@@ -88,14 +88,17 @@ function SearchResults() {
             <Button
               as="a"
               variant="link"
-              rightIcon={<Badge>{release_date}</Badge>}
               
             >
               <Image src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
               alt = "Movie poster"
+            
              />
-              <Text as="h4">{title}</Text>
-              <Text as="div">{overview}</Text>
+             <Badge>{vote_average} / 10</Badge>
+              <Text as="h4">{title}
+              </Text>
+              
+              
             </Button>
           </Link>
         </ListItem>

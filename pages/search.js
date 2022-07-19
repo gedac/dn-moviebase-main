@@ -79,8 +79,8 @@ function SearchResults() {
   return (
     
     <UnorderedList stylePosition="inside">
-      {data.results.map(({ id, title, poster_path, vote_average, }) => (
-        <ListItem key={id} list-style-type="none">
+      {data.results.map(({ id, title, poster_path, vote_average }) => (
+        <ListItem key={id} >
           
           <Link href={`/movies/${id}`}
            passHref

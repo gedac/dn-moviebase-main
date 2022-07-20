@@ -20,7 +20,7 @@ import {
 } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
 import Layout from '../components/Layout';
-
+import HistoryButton from '../components/HistoryButton';
 function SearchBar() {
   const router = useRouter();
   const { terms } = router.query;
@@ -56,6 +56,9 @@ function SearchBar() {
     </InputGroup>
   );
 }
+
+
+
 function SearchResults() {
   const { terms } = useRouter().query;
   const { data, error } = useSWR(terms && `/api/search?terms=${terms}`);
@@ -78,8 +81,14 @@ function SearchResults() {
   }
   return (
     
+
+    
+    
     <UnorderedList stylePosition="inside">
+      
       {data.results.map(({ id, title, poster_path, vote_average }) => (
+
+
         <ListItem key={id} >
           
           <Link href={`/movies/${id}`}
@@ -94,7 +103,9 @@ function SearchResults() {
               alt = "Movie poster"
             
              />
+             <div class="wrapperShadow">
              <Badge>{vote_average} / 10</Badge>
+             </div>
               <Text as="h4">{title}
               </Text>
               

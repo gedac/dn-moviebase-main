@@ -1,7 +1,7 @@
 
 import Layout from '../components/Layout';
 import Link from 'next/link';
-import watchlist from './api/watchlist';
+import history from './api/history';
 
 import {
   Container,
@@ -15,17 +15,18 @@ import {
 } from '@chakra-ui/react';
 
 
-export default function Watchlist ({ Watchlists }) { 
+export default function History ({ Histories }) { 
+  
 return(
   <Layout>
-    <h1 class="pageTitle" >Your Watchlist, Master</h1>
+    <h1 class="pageTitle" as="h1">Your History, Master</h1>
   <Container>
   <UnorderedList>
     
-    {Watchlists.map(watchlist => {
+    {Histories.map(history => {
     return(
-      <ListItem key={watchlist._id}>
-              <Link href={`/movies/${watchlist.id}`}
+      <ListItem key={history._id}>
+              <Link href={`/movies/${history.id}`}
               passHref
               >            
               <Button
@@ -33,11 +34,11 @@ return(
               variant="link"
 
               >
-              <Image src={`https://image.tmdb.org/t/p/w500/${watchlist.posterPath}`}
+              <Image src={`https://image.tmdb.org/t/p/w500/${history.posterPath}`}
               alt = "Movie poster"
 
               />
-              <Text as="h4">{watchlist.title}
+              <Text as="h4">{history.title}
               </Text>
 
 
@@ -63,10 +64,10 @@ return(
 
 
 
-Watchlist.getInitialProps = async () => {
-  const res = await fetch('http://localhost:3000/api/watchlist');
+History.getInitialProps = async () => {
+  const res = await fetch('http://localhost:3000/api/history');
   const { data } = await res.json();
-  return { Watchlists: data } 
+  return { Histories: data } 
   }
   
 

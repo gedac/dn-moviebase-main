@@ -22,6 +22,7 @@ import WatchlistButton from '../../components/WatchlistButton';
 import useFetch from "../../utils/useFetch";
 
 import { fetcher } from "../../utils/useFetch";
+import HistoryButton from '../../components/HistoryButton';
 
 function Credits(props) {
   const { movieId } = props;
@@ -48,6 +49,7 @@ function Credits(props) {
 const MovieContent = () => {
   const { id } = useRouter().query;
   const { data, error } = useSWR(id && `/api/movies/${id}`);
+  
 
   if (error) {
     return (
@@ -67,6 +69,10 @@ const MovieContent = () => {
     return <Text color="red">{data.status_message}</Text>;
   }
   return (
+    
+    
+
+    
     <Stack direction={['column', 'row']} spacing={4}>
       <Head>
         <title>{data.title}</title>
@@ -105,10 +111,16 @@ const MovieContent = () => {
         </Stack>
         <Box>{data.overview}</Box>
         <div id="rating">Rated {data.vote_average} out of 10</div>
-        <Credits movieId={id} />         
-      </Stack>
+        <Credits movieId={id} />   
+        </Stack>
     </Stack>
+
+    
   );
+  
+
+  
+
 };
 
 export default function Movie() {
@@ -120,3 +132,7 @@ export default function Movie() {
     </Layout>
   );
 }
+
+
+
+ 

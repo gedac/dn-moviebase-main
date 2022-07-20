@@ -53,14 +53,32 @@ ul{
 ul > li > a{
     max-height: 600px;
 }
-ul > li > a > span{
+
+
+ul > li > a > div{
     grid-row: 1;
     grid-column: 1;
-    background: orange;
     align-self: start;
     justify-self: end;
-    padding: 10px;
+    filter: drop-shadow(0px 10px 1px rgba(0,0,0,0.1))
 }
+
+ul > li > a > div > span{    
+    background-color: #FFCD3C!important;    
+    padding: 10px 30px 10px 30px;
+    width:170px;
+    transform:rotateZ(45deg);
+    text-align: center;
+    margin-top:15px;
+    margin-right:-50px;    
+    clip-path: polygon(22% 0, 76% 0, 100% 100%, 0% 100%);
+    box-shadow: 5px 5px 30px black!important;
+    font-size:1rem!important;
+    color:black!important;
+}
+
+
+
 
 .pageTitle{
     font-size: 40px;
@@ -68,7 +86,7 @@ ul > li > a > span{
     margin-bottom: 50px;
 }
 
-a{
+ul > li > a{
     text-decoration: none!important;
     font-size: 18px!important;
     opacity: 0.5;
@@ -76,10 +94,21 @@ a{
     transition: all .7s ease-out!important;
 }
 
-a:hover{
+ul > li > a:hover{
     opacity: 1;
     transform: scale(1.1);
     color: white!important;
     
 }
 
+.chakra-input__group{
+    margin-bottom:40px
+}
+
+a{
+    text-decoration: none!important;
+}
+
+a:hover{
+    color:white!important;
+}

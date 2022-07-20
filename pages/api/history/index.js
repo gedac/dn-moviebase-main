@@ -6,8 +6,8 @@ export default async (req, res) => {
       switch (method){
             case 'GET':
                   try{
-      const watchlists = await History.find({});
-      res.status(200).json({ success: false, data: watchlists})
+      const histories = await History.find({});
+      res.status(200).json({ success: true, data: histories})
       } catch (error) {
       res.status(400).json({ success: false });
 }

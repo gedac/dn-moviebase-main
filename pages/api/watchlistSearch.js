@@ -1,7 +1,7 @@
 import { fetcher } from '../../utils/api';
 
 const getSearchMovieUrl = (terms) =>
-  `https://api.themoviedb.org/3/search/movie?api_key=${process.env.TMDB_API_KEY}&query=${terms}`;
+  `https://api.themoviedb.org/3/movie/${terms}/credits?api_key=53876badebbba586618edeba5a132260`;
 
 export default async function handler(req, res) {
   const results = await fetcher(getSearchMovieUrl(req.query.terms));

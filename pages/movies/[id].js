@@ -27,7 +27,6 @@ function Credits(props) {
   const { movieId } = props;
   const BASE_URL = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=53876badebbba586618edeba5a132260`;
   const { data: credits, loading, error } = useFetch(BASE_URL, { credits: [] });
-  console.log(movieId);
   return (
     <div className="credits">
       <h1 id="headCredits">Credits</h1>

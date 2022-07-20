@@ -22,7 +22,7 @@ export default async function handler(req, res) {
   } else if (method === 'PUT') {
     const movie = await fetcher(getMovieUrl(id));
 
-    const watchlist = new Watchlist({ id, title: movie.title });
+    const watchlist = new Watchlist({ id, title: movie.title, posterPath:movie.poster_path });
     await watchlist.save();
 
     res.status(200).json(movie);

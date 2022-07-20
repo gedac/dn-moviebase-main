@@ -45,15 +45,15 @@
     justify-self: center;
 }
 
-.css-sjeqnk{
+ul{
     display:grid;
     grid-template-columns: repeat(3, 1fr);
 }
 
-.css-sjeqnk > li > a{
+ul > li > a{
     max-height: 600px;
 }
-.css-sjeqnk > li > a > span{
+ul > li > a > span{
     grid-row: 1;
     grid-column: 1;
     background: orange;
@@ -61,3 +61,25 @@
     justify-self: end;
     padding: 10px;
 }
+
+.pageTitle{
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+a{
+    text-decoration: none!important;
+    font-size: 18px!important;
+    opacity: 0.5;
+    
+    transition: all .7s ease-out!important;
+}
+
+a:hover{
+    opacity: 1;
+    transform: scale(1.1);
+    color: white!important;
+    
+}
+

@@ -7,7 +7,7 @@ global.models.Watchlist =
   mongoose.model('Watchlist', {
     id: { type: Number, required: true },
     title: { type: String, required: true },
-    date: { type: Date, default: Date.now },
+    posterPath: { type: String, required: true},
   });
 
 export default global.models.Watchlist;

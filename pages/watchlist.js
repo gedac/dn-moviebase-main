@@ -1,27 +1,66 @@
 
 import Layout from '../components/Layout';
 import Link from 'next/link';
-import { Card } from 'semantic-ui-react';
 import watchlist from './api/watchlist';
 
+import {
+  Container,
+  UnorderedList,
+  ListItem,  
+  Heading,
+  Button,
+  Image,
+  Text,
+  Center
+} from '@chakra-ui/react';
 
-const Watchlist = ({ Watchlists }) => {
+
+export default function Watchlist ({ Watchlists }) { 
 return(
-  <div>
+  <Layout>
+    <Center class="pageTitle" as="h1">Your Watchlist, Master</Center>
+  <Container>
+  <UnorderedList>
+    
     {Watchlists.map(watchlist => {
     return(
-      <div key={watchlist._id}>
-        <div>
-          <div>{watchlist.title}</div>
-        </div>
-      </div>
+      <ListItem key={watchlist._id}>
+              <Link href={`/movies/${watchlist.id}`}
+              passHref
+              >            
+              <Button
+              as="a"
+              variant="link"
+
+              >
+              <Image src={`https://image.tmdb.org/t/p/w500/${watchlist.posterPath}`}
+              alt = "Movie poster"
+
+              />
+              <Text as="h4">{watchlist.title}
+              </Text>
+
+
+              </Button>
+              </Link>
+
+
+
+
+      </ListItem>
     )
   })}
-  </div>
+  </UnorderedList>
+  </Container>
+  </Layout>
 )
+
+
+
 
   
 }
+
 
 
 Watchlist.getInitialProps = async () => {
@@ -29,4 +68,10 @@ Watchlist.getInitialProps = async () => {
   const { data } = await res.json();
   return { Watchlists: data } 
   }
-  export default Watchlist;
+  
+
+
+
+  
+
+  

@@ -1,7 +1,8 @@
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import Head from 'next/head';
-import useSWR from 'swr';
+import useSWR, { useSWRConfig } from 'swr';
+import history from '../api/history';
 import { buildImageUrl } from '../../utils/api';
 import {
   Badge,
@@ -23,6 +24,7 @@ import useFetch from "../../utils/useFetch";
 
 import { fetcher } from "../../utils/useFetch";
 import HistoryButton from '../../components/HistoryButton';
+import axios from 'axios';
 
 function Credits(props) {
   const { movieId } = props;
@@ -45,6 +47,33 @@ function Credits(props) {
   );
 }
 
+function Historyput(props) {
+  const { movieId } = props;
+  const { id } = useRouter().query;
+  console.log('test');
+  axios.get("/api/history")
+    .then((response) => {
+      const jsonArray = response.data;
+      let idFound = false;
+      
+      for (var i = 0; i < jsonArray.data.length; i++) {
+        if(parseInt(id) == jsonArray.data[i].id){
+          idFound = true;
+        }
+      }
+      if (idFound === true) {
+        axios.delete(`/api/history/${id}`);
+    }
+    axios.delete(`/api/history/${id}`);  
+      axios.put(`/api/history/${id}`);
+    })
+    .catch(()=> {
+      console.log("not working");
+    })
+
+    return(<div></div>);
+
+}
 
 const MovieContent = () => {
   const { id } = useRouter().query;
@@ -128,6 +157,8 @@ export default function Movie() {
     <Layout>
       <Container h="full">
         <MovieContent />
+        <HistoryButton></HistoryButton>
+        <Historyput/>
       </Container>
     </Layout>
   );

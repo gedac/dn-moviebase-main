@@ -1,4 +1,3 @@
-
 import Watchlist from "../../../models/Watchlist";
 
 export default async (req, res) => {

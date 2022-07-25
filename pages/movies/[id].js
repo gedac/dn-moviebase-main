@@ -64,7 +64,6 @@ function Historyput(props) {
       if (idFound === true) {
         axios.delete(`/api/history/${id}`);
     }
-    axios.delete(`/api/history/${id}`);  
       axios.put(`/api/history/${id}`);
     })
     .catch(()=> {
@@ -121,6 +120,7 @@ const MovieContent = () => {
         />
       </Box>
       <Stack>
+      <Historyput/>
         <HStack justify="space-between">
           <Heading as="h2">{data.title}</Heading>
           <Box>
@@ -156,9 +156,7 @@ export default function Movie() {
   return (
     <Layout>
       <Container h="full">
-        <MovieContent />
-        <HistoryButton></HistoryButton>
-        <Historyput/>
+        <MovieContent />       
       </Container>
     </Layout>
   );

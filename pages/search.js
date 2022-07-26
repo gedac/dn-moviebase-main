@@ -20,7 +20,6 @@ import {
 } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
 import Layout from '../components/Layout';
-import HistoryButton from '../components/HistoryButton';
 function SearchBar() {
   const router = useRouter();
   const { terms } = router.query;

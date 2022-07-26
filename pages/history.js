@@ -1,7 +1,7 @@
-
+import dbConnect from "../utils/dbConnect";
 import Layout from '../components/Layout';
 import Link from 'next/link';
-import history from './api/history';
+import History from "../models/History";
 
 import {
   Container,
@@ -15,7 +15,7 @@ import {
 } from '@chakra-ui/react';
 
 
-export default function History ({ Histories }) { 
+export default function HistoryPage ({ histories }) { 
   
 return(
   <Layout>
@@ -23,7 +23,7 @@ return(
   <Container>
   <UnorderedList>
     
-    {Histories.map(history => {
+    {histories.map(history => {
     return(
       <ListItem key={history._id}>
               <Link href={`/movies/${history.id}`}
@@ -63,12 +63,20 @@ return(
 }
 
 
+export async function getServerSideProps() {
+  await dbConnect();
+  const result = await History.find({}).sort({ date: -1 });
+  const histories = result.map((doc) => {
+    const history = doc.toObject();
+    history._id = history._id.toString();
+    history.title = history.title.toString();
+    // console.log(movie);
 
-History.getInitialProps = async () => {
-  const res = await fetch('http://localhost:3000/api/history');
-  const { data } = await res.json();
-  return { Histories: data } 
-  }
+    return history;
+  });
+
+  return { props: { histories: histories } };
+}
   
 
 

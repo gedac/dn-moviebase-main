@@ -1,6 +1,7 @@
-import { fetcher } from '../../../utils/api';
-import History from '../../../models/History';
-import dbConnect from '../../../utils/dbConnect';
+import { fetcher } from "../../../utils/api";
+import History from "../../../models/History";
+import dbConnect from "../../../utils/dbConnect";
+import Watchlist from "../../../models/Watchlist";
 
 const getMovieUrl = (id) =>
   `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.TMDB_API_KEY}`;
@@ -21,7 +22,7 @@ export default async function handler(req, res) {
     }
   } else if (method === 'PUT') {
     const movie = await fetcher(getMovieUrl(id));
-
+    await Watchlist.findOne({ id })?.deleteOne({ id });
     const history = new History({ id, title: movie.title, posterPath:movie.poster_path });
     await history.save();
 

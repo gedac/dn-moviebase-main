@@ -1,77 +1,71 @@
-
-import Layout from '../components/Layout';
-import Link from 'next/link';
-import watchlist from './api/watchlist';
-
+import useSWR from "swr";
+import Layout from "../components/Layout";
 import {
+  Box,
   Container,
-  UnorderedList,
-  ListItem,  
   Heading,
-  Button,
-  Image,
+  Wrap,
   Text,
-  Center
-} from '@chakra-ui/react';
+  Progress,
+  UnorderedList,
+} from "@chakra-ui/react";
+import MovieResult from "../components/MovieResult";
 
+const MoviesSectionTitle = ({ children }) => (
+  <Heading size="md" mb="5" mt="6">
+    {children}
+  </Heading>
+);
 
-export default function Watchlist ({ Watchlists }) { 
-return(
-  <Layout>
-    <h1 class="pageTitle" >Your Watchlist, Master</h1>
-  <Container>
-  <UnorderedList>
-    
-    {Watchlists.map(watchlist => {
-    return(
-      <ListItem key={watchlist._id}>
-              <Link href={`/movies/${watchlist.id}`}
-              passHref
-              >            
-              <Button
-              as="a"
-              variant="link"
+const MoviesWrap = ({ children }) => (
+  <Wrap spacing="10px" textAlign="center" justify={"center"}>
+    {children}
+  </Wrap>
+);
 
-              >
-              <Image src={`https://image.tmdb.org/t/p/w500/${watchlist.posterPath}`}
-              alt = "Movie poster"
+export default function whattowatch() {
+  const { data, error } = useSWR("/api/whattowatch");
 
-              />
-              <Text as="h4">{watchlist.title}
-              </Text>
-
-
-              </Button>
-              </Link>
-
-
-
-
-      </ListItem>
-    )
-  })}
-  </UnorderedList>
-  </Container>
-  </Layout>
-)
-
-
-
-
-  
-}
-
-
-
-Watchlist.getInitialProps = async () => {
-  const res = await fetch('http://localhost:3000/api/watchlist');
-  const { data } = await res.json();
-  return { Watchlists: data } 
+  if (error) {
+    return (
+      <Text color="red">
+        Error fetching recommended movies for you: {JSON.stringify(error)}
+      </Text>
+    );
   }
-  
+  if (!data) {
+    return <Progress size="xs" isIndeterminate />;
+  }
+  console.log(data);
 
+  return (
+    <Layout title="Recommended">
+      <Container>
+      <Box mb="3em" minHeight="100vh">
+      <h1 class="pageTitle" as="h1">From your WatchList</h1>
+          <MoviesSectionTitle></MoviesSectionTitle>
+          <UnorderedList>
+            {data.watchlist.map((movie) => (
+              <MovieResult key={"movie.id"} movie={movie} />
+            ))}
+        </UnorderedList>
+        <h1 class="pageTitle" as="h1">Watch again</h1>
 
-
-  
-
-  
+              <ul>
+            {data.history.map((movie) => (
+              <MovieResult key={"movie.id"} movie={movie} />
+            ))}
+            </ul>
+      
+            <h1 class="pageTitle" as="h1">Now trending</h1>
+          <ul>
+            {data.trending?.results?.map((movie) => (
+              <MovieResult key={"movie.id"} movie={movie} />
+            ))}
+          
+          </ul>
+      </Box>
+      </Container>
+    </Layout>
+  );
+}

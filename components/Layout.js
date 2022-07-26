@@ -66,7 +66,7 @@ function Header() {
           <Spacer />
 
           <Box display={[isOpen ? 'block' : 'none', , 'block']}>
-            <MenuItem href="/" variant="outline">
+            <MenuItem href="/whattowatch" variant="outline">
               What to watch
             </MenuItem>
           </Box>

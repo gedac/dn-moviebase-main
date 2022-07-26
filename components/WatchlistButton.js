@@ -13,7 +13,8 @@ export default function WatchlistButton() {
     <Tooltip label={data?.found ? 'Remove from watchlist' : 'Add to watchlist'}>
       <IconButton
         isLoading={!data}
-        colorScheme={data?.found ? 'purple' : 'gray'}
+        colorScheme={data?.found ? 'purple' : 'black'}
+        background={data?.found ? 'purple' : 'white'}
         size="sm"
         onClick={() => {
           mutate(`/api/watchlist/${id}`, () =>

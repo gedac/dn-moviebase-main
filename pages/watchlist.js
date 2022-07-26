@@ -1,7 +1,7 @@
-
+import dbConnect from "../utils/dbConnect";
 import Layout from '../components/Layout';
 import Link from 'next/link';
-import watchlist from './api/watchlist';
+import Watchlist from "../models/Watchlist";
 
 import {
   Container,
@@ -15,14 +15,15 @@ import {
 } from '@chakra-ui/react';
 
 
-export default function Watchlist ({ Watchlists }) { 
+export default function HistoryPage ({ watchlists }) { 
+  
 return(
   <Layout>
-    <h1 class="pageTitle" >Your Watchlist, Master</h1>
+    <h1 class="pageTitle" as="h1">Your Watchlist, Master</h1>
   <Container>
   <UnorderedList>
     
-    {Watchlists.map(watchlist => {
+    {watchlists.map(watchlist => {
     return(
       <ListItem key={watchlist._id}>
               <Link href={`/movies/${watchlist.id}`}
@@ -62,12 +63,20 @@ return(
 }
 
 
+export async function getServerSideProps() {
+  await dbConnect();
+  const result = await Watchlist.find({}).sort({ date: -1 });
+  const watchlists = result.map((doc) => {
+    const watchlist = doc.toObject();
+    watchlist._id = watchlist._id.toString();
+    watchlist.title = watchlist.title.toString();
+    // console.log(movie);
 
-Watchlist.getInitialProps = async () => {
-  const res = await fetch('http://localhost:3000/api/watchlist');
-  const { data } = await res.json();
-  return { Watchlists: data } 
-  }
+    return watchlist;
+  });
+
+  return { props: { watchlists: watchlists } };
+}
   
 
 

@@ -1,5 +1,5 @@
 .css-0 > a{
-    display:grid;
+    display:grid!important;
     grid-template-columns: 300px;
     grid-template-rows:1fr 50px;
     grid-column-gap:20px;
@@ -12,11 +12,20 @@
     max-width: 300px;
 }
 
-
+.chakra-button{
+    display:grid!important;
+}
 
 .chakra-text.css-0{
     align-self: center;
     justify-self: center;
+    font-size:18px;
+    margin-top:10px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width:300px;
+    text-align: center;
+    overflow: hidden;
 }
 
 .css-0{
@@ -45,9 +54,28 @@
     justify-self: center;
 }
 
-ul{
+#castList{
+    display:flex;
+}
+#castList > div{
+    display:flex;
+    gap:53px;
+}
+#actorImage{
+    border-radius: 15px;;
+}
+
+ul {
     display:grid;
     grid-template-columns: repeat(3, 1fr);
+    margin:0!important;
+}
+
+
+
+li{
+    align-self: center;
+    justify-self: center;
 }
 
 ul > li > a{

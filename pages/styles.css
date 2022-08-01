@@ -140,3 +140,15 @@ a{
 a:hover{
     color:white!important;
 }
+
+
+@media only screen and (max-width: 1024px) {
+    ul {
+        display:grid;
+        grid-template-columns: repeat(1, 1fr);
+        margin:0!important;
+    }
+    #castList{
+        flex-direction: column;
+}
+}

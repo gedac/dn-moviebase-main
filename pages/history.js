@@ -19,7 +19,7 @@ export default function HistoryPage ({ histories }) {
   
 return(
   <Layout>
-    <h1 class="pageTitle" as="h1">Your History, Master</h1>
+    <h1 id="pageTitle" as="h1">Your History, Master</h1>
   <Container>
   <UnorderedList>
     

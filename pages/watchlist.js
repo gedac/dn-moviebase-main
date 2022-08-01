@@ -19,7 +19,7 @@ export default function HistoryPage ({ watchlists }) {
   
 return(
   <Layout>
-    <h1 class="pageTitle" as="h1">Your Watchlist, Master</h1>
+    <h1 id="pageTitle" as="h1">Your Watchlist, Master</h1>
   <Container>
   <UnorderedList>
     

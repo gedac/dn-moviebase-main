@@ -102,7 +102,7 @@ function SearchResults() {
               alt = "Movie poster"
             
              />
-             <div class="wrapperShadow">
+             <div id="wrapperShadow">
              <Badge>{vote_average} / 10</Badge>
              </div>
               <Text as="h4">{title}

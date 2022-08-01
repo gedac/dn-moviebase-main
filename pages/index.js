@@ -27,14 +27,14 @@ export default function Homepage() {
     <Layout title="Moviebase">
       <Container>
           
-      <h1 class="pageTitle" as="h1">Recomandations based on your history</h1>
+      <h1 id="pageTitle" as="h1">Recomandations based on your history</h1>
           <ul>
             {data.recMovies?.results?.map((movie) => (
               <MovieResult key={"movie.id"} movie={movie} />
             ))}
           </ul>
         
-          <h1 class="pageTitle" as="h1">Best rated movies</h1>
+          <h1 id="pageTitle" as="h1">Best rated movies</h1>
           <ul>
           
             {data.topRated?.results?.map((movie) => (
@@ -43,13 +43,13 @@ export default function Homepage() {
             </ul>
         
         
-            <h1 class="pageTitle" as="h1">Upcoming movies</h1>
+            <h1 id="pageTitle" as="h1">Upcoming movies</h1>
             <ul>
             {data.upcomingMovies?.results?.map((movie) => (
               <MovieResult key={"movie.id"} movie={movie} />
             ))}
             </ul>
-            <h1 class="pageTitle" as="h1">Popular titles</h1>
+            <h1 id="pageTitle" as="h1">Popular titles</h1>
             <ul>
             {data.popularMovies?.results?.map((movie) => (
               <MovieResult key={"movie.id"} movie={movie} />

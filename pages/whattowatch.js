@@ -42,14 +42,14 @@ export default function whattowatch() {
     <Layout title="Recommended">
       <Container>
       <Box mb="3em" minHeight="100vh">
-      <h1 class="pageTitle" as="h1">From your WatchList</h1>
+      <h1 id="pageTitle" as="h1">From your WatchList</h1>
           <MoviesSectionTitle></MoviesSectionTitle>
           <UnorderedList>
             {data.watchlist.map((movie) => (
               <MovieResult key={"movie.id"} movie={movie} />
             ))}
         </UnorderedList>
-        <h1 class="pageTitle" as="h1">Watch again</h1>
+        <h1 id="pageTitle" as="h1">Watch again</h1>
 
               <ul>
             {data.history.map((movie) => (
@@ -57,7 +57,7 @@ export default function whattowatch() {
             ))}
             </ul>
       
-            <h1 class="pageTitle" as="h1">Now trending</h1>
+            <h1 id="pageTitle" as="h1">Now trending</h1>
           <ul>
             {data.trending?.results?.map((movie) => (
               <MovieResult key={"movie.id"} movie={movie} />

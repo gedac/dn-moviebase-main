@@ -1,4 +1,4 @@
-import useSWR from "swr";
+import SWRResponse from "swr";
 import Layout from "../components/Layout";
 import {
   Box,
@@ -24,7 +24,7 @@ const MoviesWrap = ({ children }) => (
 );
 
 export default function whattowatch() {
-  const { data, error } = useSWR("/api/whattowatch");
+  const { data, error } = SWRResponse("/api/whattowatch");
 
   if (error) {
     return (
@@ -36,7 +36,7 @@ export default function whattowatch() {
   if (!data) {
     return <Progress size="xs" isIndeterminate />;
   }
-  console.log(data);
+ 
 
   return (
     <Layout title="Recommended">

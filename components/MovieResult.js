@@ -6,7 +6,7 @@ import React from "react";
 export default function MovieResult({ movie }) {
   return (
   
-  <li class="css-0">
+  <li className="css-0">
   <Link movie={movie} href={`/movies/${movie.id}`}
    passHref
    >            
